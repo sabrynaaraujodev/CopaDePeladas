@@ -1,0 +1,5 @@
+com\cadastro\copaDePeladas\services\CadastroService.class
+com\cadastro\copaDePeladas\CopaDePeladasApplication.class
+com\cadastro\copaDePeladas\repositories\AtletasRepository.class
+com\cadastro\copaDePeladas\entities\Atletas.class
+com\cadastro\copaDePeladas\controller\CadastroAtletas.class

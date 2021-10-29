@@ -1,6 +1,0 @@
-com\cadastro\copaDePeladas\services\CadastroServices.class
-com\cadastro\copaDePeladas\CopaDePeladasApplication.class
-com\cadastro\copaDePeladas\repositories\AtletasRepository.class
-com\cadastro\copaDePeladas\entities\Atletas.class
-com\cadastro\copaDePeladas\controller\CadastroAtletas.class
-com\cadastro\copaDePeladas\dtos\AtletasDto.class
