@@ -5,6 +5,7 @@ import com.cadastro.copaDePeladas.services.CadastroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,9 +24,10 @@ public class CadastroAtletas  {
     @Autowired
     private CadastroService cadastroService;
 
-    @RequestMapping(value = "/tela" ,  method = RequestMethod.GET)
-    public ModelAndView getAtletas(){
+    @GetMapping(value = "/tela")
+    public ModelAndView index(Model model){
         ModelAndView teste = new ModelAndView("tela");
+        model.addAttribute("nome" , "Sabryna");
         return teste;
     }
 
@@ -35,10 +37,13 @@ public class CadastroAtletas  {
         return "/tela";
     }
 
-    @GetMapping
-    public ResponseEntity<List<Atletas>> listar() {
+
+    @GetMapping(value = "/teste")
+    public ModelAndView listar(Model model){
+        ModelAndView lista = new ModelAndView("teste");
         List<Atletas> atletas = cadastroService.listar();
-        return ResponseEntity.status(HttpStatus.OK).body(atletas);
+        model.addAttribute("atletas",atletas);
+        return lista;
     }
 
     @GetMapping("/{id}")
