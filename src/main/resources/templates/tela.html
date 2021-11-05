@@ -15,38 +15,38 @@
     <a>SejX Bem VindX</a>
 </header>
 
-    <form class="form-horizontal" method="POST" th:action="@{/api/cadastro/novo}" th:object="${atleta}">
-
-    <div class="container" style="width: 60%; padding-bottom: 30px;">
+<div class="container" style="width: 60%; padding-bottom: 30px;">
+    <form class="form-horizontal" method="POST" action="/api/cadastro/novo">
             <div class="form-group">
-                <label for="formGroupExampleInput">Nome Completo</label>
-                <input type="text" class="form-control" id="formGroupExampleInput">
+                <label for="nome">Nome Completo</label>
+                <input name="nome" type="text" class="form-control" id="nome">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Time</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2">
+                <label for="time">Time</label>
+                <input name="time" type="text" class="form-control" id="time">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Categoria</label>
-                <input type="text" class="form-control" id="formGroupExampleInput3">
+                <label for="categoria">Categoria</label>
+                <input name="categoria" type="text" class="form-control" id="categoria">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Numero Camisa</label>
-                <input type="number" class="form-control" id="formGroupExampleInput4">
+                <label for="numeroCamisa">Numero Camisa</label>
+                <input name="numeroCamisa" type="number" class="form-control" id="numeroCamisa">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Tamanho Camisa</label>
-                <input type="text" class="form-control" id="formGroupExampleInput5">
+                <label for="tamanhoCamisa">Tamanho Camisa</label>
+                <input name="tamanhoCamisa" type="text" class="form-control" id="tamanhoCamisa">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Nome Camisa</label>
-                <input type="text" class="form-control" id="formGroupExampleInput6">
+                <label for="nomeCamisa">Nome Camisa</label>
+                <input name="nomeCamisa"  class="form-control" id="nomeCamisa">
             </div>
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
-    </div>
     </form>
+</div>
+
 
 </body>
 </html>
