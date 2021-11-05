@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -27,14 +26,13 @@ public class CadastroAtletas  {
     @RequestMapping(value = "/tela" ,  method = RequestMethod.GET)
     public ModelAndView getAtletas(){
         ModelAndView teste = new ModelAndView("tela");
-        List<Atletas> atletas = cadastroService.listar();
-        teste.addObject("tela",atletas);
         return teste;
     }
 
-    @PostMapping(path = "/novo")
-    public Atletas adicionaAtleta(@Valid @RequestBody Atletas atletas) {
-        return cadastroService.salvar(atletas);
+    @RequestMapping(method = RequestMethod.POST , value = "/novo")
+    public String adicionaAtleta(@Valid Atletas atletas) {
+        cadastroService.salvar(atletas);
+        return "/tela";
     }
 
     @GetMapping
