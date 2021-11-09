@@ -3,7 +3,11 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title> Copa de Peladas - BR </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <header>
@@ -12,12 +16,35 @@
         <span class="navbar-brand mb-0 h1">Cadastro de Atletas</span>
     </nav>
     Olá <span th:text="${nome}"></span> ,
-    <a>SejX Bem VindX</a>
+    <p>SejX Bem VindX</p>
 </header>
 
+<script>
+    function enviaForm(form) {
+
+      $.ajaxSetup({
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        accepts: {
+            text: "application/json"
+        }
+      });
+
+      // converte o formulario para json
+      let dataJSON = {};
+      $.map($(form).serializeArray(), function(n, i){
+        dataJSON[n['name']] = n['value'];
+      });
+
+      $.post("/api/cadastro/novo", JSON.stringify(dataJSON), function(json) {
+          console.log(json);
+      }, 'json');
+    }
+  </script>
+
 <div class="container" style="width: 60%; padding-bottom: 30px;">
-    <form class="form-horizontal" method="POST" action="/api/cadastro/novo">
-            <div class="form-group">
+    <form onsubmit="enviaForm(this)" action="javascript:return false;">
+        <div class="form-group">
                 <label for="nome">Nome Completo</label>
                 <input name="nome" type="text" class="form-control" id="nome">
             </div>

@@ -24,26 +24,32 @@ public class CadastroAtletas  {
     @Autowired
     private CadastroService cadastroService;
 
-    @GetMapping(value = "/tela")
-    public ModelAndView index(Model model){
-        ModelAndView teste = new ModelAndView("tela");
-        model.addAttribute("nome" , "Sabryna");
-        return teste;
+    @GetMapping(value = "/index")
+    public ModelAndView index(){
+        ModelAndView login = new ModelAndView("index");
+        return login;
     }
 
-    @RequestMapping(method = RequestMethod.POST , value = "/novo")
-    public String adicionaAtleta(@Valid Atletas atletas) {
+    @GetMapping(value = "/cadastrarAtletas")
+    public ModelAndView cadastrarAtletas(){
+        ModelAndView cadastrarAtletas = new ModelAndView("cadastrarAtletas");
+        return cadastrarAtletas;
+    }
+
+
+    @PostMapping (value = "/novo")
+    public String adicionaAtleta(@RequestBody @Valid Atletas atletas) {
         cadastroService.salvar(atletas);
-        return "/tela";
+        return "Atleta salvo com sucesso";
     }
 
 
-    @GetMapping(value = "/teste")
+    @GetMapping(value = "/consultarAtletas")
     public ModelAndView listar(Model model){
-        ModelAndView lista = new ModelAndView("teste");
+        ModelAndView consulta = new ModelAndView("consultarAtletas");
         List<Atletas> atletas = cadastroService.listar();
         model.addAttribute("atletas",atletas);
-        return lista;
+        return consulta;
     }
 
     @GetMapping("/{id}")
